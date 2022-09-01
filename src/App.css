@@ -1,38 +1,110 @@
-.App {
-  text-align: center;
+.userIds
+{
+    
+    display: flex;
+    justify-content: space-between ;
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    background-color: rgb(16, 3, 2);
+    padding: 18px;
+    border-radius: 8px;
+    height: 55px;
+    padding-bottom: 4px;
+    padding-left: 15px;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.pictureId
+{
+
+border-radius: 60px;
+height: 75px;
+width: 70px;    
+margin-bottom: 3px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.userNameId
+{ 
+    display: flex;
+    color: white;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.rechercher
+{
+    color: rgb(54, 52, 52);
+    margin-top: 1px;
+    padding: 5px;
+    border-radius: 10px;
+
 }
 
-.App-link {
-  color: #61dafb;
+.userIds .Mysearch
+{
+    padding-right: 400px;
+    padding-bottom: 18px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.SearchBar
+{
+    height: 32px;
+    margin: auto;
+    width: 300px;
+    outline: none;
+    border: none;
+    border-radius: 14px;
+    background-color: rgb(215, 223, 229);
+}
+
+.iconS
+{
+    gap: 20px;
+    cursor: pointer;
+}
+
+.connect
+{
+display: flex;
+flex-direction: column;
+padding-top: 0px;
+}
+
+.enTantque
+{
+    color: rgb(248, 224, 4);
+    font-size: small;
+}
+
+.imgB
+{
+    height: 20px;
+    width: 20px;
+}
+
+
+.Circle
+{
+    color: #21f800;
+    
+}
+
+.profileAndlogo
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.LOGO
+{
+display: flex;
+color: rgb(248, 224, 4);;
+margin-bottom: 19px;
+}
+
+.Drum
+{
+    margin-right: 10px;
 }
