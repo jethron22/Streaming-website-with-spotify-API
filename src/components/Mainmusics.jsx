@@ -1,8 +1,9 @@
 import React from "react";
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, InputGroup, FormControl, Button, Row, card } from "react-bootstrap";
-import{useEffect, useState} from 'react'
+import { Container, InputGroup, FormControl, Button, Row } from "react-bootstrap";
+import {Card} from 'react-bootstrap';
+import{useState, useEffect } from 'react'
 
 
 function Mainmusics() {
@@ -15,22 +16,31 @@ const [searchInput, setSearchInput] = useState("");
             <InputGroup className="mb-3" size="lg">
 <FormControl placeholder="Rechercher un artiste"
 type="Input" 
-onKeyPress={ event => {
-    if (event.Key == "Enter" ) {
-        console.log("press enter");
+onKeyDown={ event => {
+    if (event.key == "Enter" ) {
+      console.log("pressed enter");
     }
 }}
-onchange={event => setSearchInput(event.target.value)}
+
+
+onChange={event => setSearchInput(event.target.value)}
+
 
 />
-<button onClick={()=>{console.log("hello world")}}>
+<button type="button" class="btn btn-primary" onClick={()=>{console.log("hello world")}}>
 rechercher
 </button>
 
             </InputGroup>
         </container>
-
-    
+        <Container>
+<Card>
+  <Card src="#" />
+  <Button.Body>
+    <Card.Title> Nom de l'album</Card.Title>
+  </Button.Body>
+</Card>
+</Container>
     </div>
   )
 }
