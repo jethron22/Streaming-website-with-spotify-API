@@ -67,8 +67,21 @@ function Mainmusics({}) {
       .then((response) => response.json())
       .then((data) => {
         /*return data.artists.items[0].id*/
-        setArtistID(data.artists.items[0].id);
+        setArtistID(data.artists.items[0, 1].id);
+	  });
+	  
+
+	  
+	  fetch(
+      "https://api.spotify.com/v1/search?q=" + searchInput + "&type=release_date",
+      parametresRecherche
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setDataAlbum(data.release_date.items);
       });
+
 
     fetch(
       "https://api.spotify.com/v1/search?q=" + searchInput +  "&type=album",
@@ -96,7 +109,8 @@ function Mainmusics({}) {
                 search();
               }
             }}
-					  onChange={(event) => { setSearchInput(event.target.value); {
+					  onChange={(event) => {
+						  setSearchInput(event.target.value); {
               search();
             } }}
           />
@@ -113,6 +127,7 @@ function Mainmusics({}) {
                 <img src={album.images[0].url} />
                 <Card.Body>
                   <Card.Title>{album.name}</Card.Title>
+                  <Card.Title>{album.release_date}</Card.Title>
                 </Card.Body>
               </Card>
             );
