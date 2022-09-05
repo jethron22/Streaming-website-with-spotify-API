@@ -18,8 +18,8 @@ function Mainmusics({}) {
 			method: 'POST',
 			headers: {
 				'Content-Type': ' application/x-www-form-urlencoded'
+				
 			},
-
 			body: 'grant_type=client_credentials&client_id=' + CLIENT_ID + '&client_secret=' + CLIENT_SECRET
 		}
 
@@ -56,6 +56,7 @@ function Mainmusics({}) {
 		})
 
 		// Afficher les albums d'artistes aux utilisateurs //
+		
 	};
 
 
