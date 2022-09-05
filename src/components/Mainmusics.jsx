@@ -127,7 +127,7 @@ function Mainmusics({}) {
                 <img src={album.images[0].url} />
                 <Card.Body>
                   <Card.Title>{album.name}</Card.Title>
-                  <Card.Title>{album.release_date}</Card.Title>
+                  <p className="Card.Title"> Sortie {album.release_date}</p>
                 </Card.Body>
               </Card>
             );
