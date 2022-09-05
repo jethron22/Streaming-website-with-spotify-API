@@ -15,12 +15,14 @@ const CLIENT_ID = "3ef00953d1fb46f8a315b8b4f9141d86";
 const CLIENT_SECRET = "1dda9ed5c4ff447fbfd0b8d560fce93f";
 
 function Mainmusics({}) {
-  const [searchInput, setSearchInput] = useState("koffi");
+  const [searchInput, setSearchInput] = useState('Lynnsha');
   const [accessToken, setAccessToken] = useState("");
   const [dataAlbum, setDataAlbum] = useState([]);
   const [artistID, setArtistID] = useState(null);
 
   useEffect(() => {
+    //Output random artist
+
     let authParameters = {
       method: "POST",
       headers: {
@@ -44,7 +46,7 @@ function Mainmusics({}) {
 
   // Système de Recherche des musiques
 
-   function search() {
+  function search() {
     console.log("Trouver" + searchInput);
     // Trouver l'ID de l'artiste au moyen de la recherche implementé//
 
@@ -68,19 +70,15 @@ function Mainmusics({}) {
         setArtistID(data.artists.items[0].id);
       });
 
-    //console.log();
-
     fetch(
-      "https://api.spotify.com/v1/search?q=" + searchInput + "&type=album",
+      "https://api.spotify.com/v1/search?q=" + searchInput +  "&type=album",
       parametresRecherche
     )
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
         setDataAlbum(data.albums.items);
-	  });
-	   
-	 
+      });
 
     // Afficher les albums d'artistes aux utilisateurs //
   }
@@ -98,18 +96,20 @@ function Mainmusics({}) {
                 search();
               }
             }}
-            onChange={(event) => setSearchInput(event.target.value)}
+					  onChange={(event) => { setSearchInput(event.target.value); {
+              search();
+            } }}
           />
-          <button type="button" className="btn btn-primary" onClick={search}>
+          <button type="button" className="btn btn-primary" onKeyDown={search}>
             rechercher
           </button>
         </InputGroup>
       </Container>
       <Container>
-        <Row className="mx-2 row row-cols-4">
+        <Row className="w-100 mx-2 row row-cols-2">
           {dataAlbum.map((album, i) => {
             return (
-              <Card>
+              <Card className="shadow-lg m-2" style={{ width: "250px" }}>
                 <img src={album.images[0].url} />
                 <Card.Body>
                   <Card.Title>{album.name}</Card.Title>
