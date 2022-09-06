@@ -12,7 +12,7 @@ const CLIENT_ID = "3ef00953d1fb46f8a315b8b4f9141d86";
 const CLIENT_SECRET = "1dda9ed5c4ff447fbfd0b8d560fce93f";
 
 function Mainmusics({}) {
-  const [searchInput, setSearchInput] = useState("Meddy");
+  const [searchInput, setSearchInput] = useState("Christina shusho");
   const [accessToken, setAccessToken] = useState("");
   const [dataAlbum, setDataAlbum] = useState([]);
   const [artistID, setArtistID] = useState(null);
