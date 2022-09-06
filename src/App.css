@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+
+.Mycontainer
+{
+	font-family: 'Inter', sans-serif;
+	align-items: center;
+}
+
+.bg-dark
+{
+display: flex;
+border-radius: 10px;
+margin-top: 10px;
+
+}
+
 .userIds
 {
     
@@ -12,6 +28,7 @@
     height: 55px;
     padding-bottom: 4px;
     padding-left: 15px;
+	font-family: 'Inter', sans-serif;
 
 }
 
@@ -108,3 +125,10 @@ margin-bottom: 19px;
 {
     margin-right: 10px;
 }
+
+.buttonPlay
+{
+	width: 50px;
+	height: 50px;
+}
+
