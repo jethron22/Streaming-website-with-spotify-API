@@ -3,12 +3,16 @@ import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Card,Container,InputGroup,FormControl,Button,Row,} from "react-bootstrap";
 import { useState, useEffect } from "react";
+import CelebrationIcon from "@mui/icons-material/Celebration";
+import { Favorite } from "@mui/icons-material";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
 const CLIENT_ID = "3ef00953d1fb46f8a315b8b4f9141d86";
 const CLIENT_SECRET = "1dda9ed5c4ff447fbfd0b8d560fce93f";
 
 function Mainmusics({}) {
-  const [searchInput, setSearchInput] = useState("Lynnsha");
+  const [searchInput, setSearchInput] = useState("Meddy");
   const [accessToken, setAccessToken] = useState("");
   const [dataAlbum, setDataAlbum] = useState([]);
   const [artistID, setArtistID] = useState(null);
@@ -121,30 +125,43 @@ function Mainmusics({}) {
         <Row className="w-100 mx-2 row row-cols-2">
           {dataAlbum.map((album, i) => {
             return (
-              <Card className="shadow-sm p-2 ml-2 m-2 bg-secondary" style={{ width: "250px" }}>
+              <Card
+                className="shadow-sm p-2 ml-2 m-2 bg-secondary"
+                style={{ width: "250px" }}
+              >
                 <img src={album.images[0].url} />
                 <Card.Body>
                   <Card.Title>{album.name}</Card.Title>
-                  <p className="Card.Title"> Sortie en {album.release_date}</p>
-					</Card.Body>
-					
-		<div className="Iframe">	
-<iframe
-  style={{ borderRadius: "12px" }}
-  src={
-    "https://open.spotify.com/embed/album/" + album.id + "?utm_source=generator"
-  }
-  width="220"
-  height="240"
-  frameBorder="0"
-  allowFullScreen=""
-  allow="autoplay; clipboard-write; encrypted-media; 
+                  <p className="CardTit">
+                    <CelebrationIcon className="Cebrate" color="secondary" /> Sortie en{" "}
+                    {album.release_date}
+                  </p>
+                  <div className="PreferencesBlocs">
+                    <Favorite className="FavoriteIcon" />
+                    <ThumbUpIcon className="ThumbUp" />
+                    <PlaylistAddIcon className="PlaylistIcon" />
+                  </div>
+                </Card.Body>
+
+                <div className="Iframe">
+                  <iframe
+                    style={{ borderRadius: "12px" }}
+                    src={
+                      "https://open.spotify.com/embed/album/" +
+                      album.id +
+                      "?utm_source=generator"
+                    }
+                    width="220"
+                    height="240"
+                    frameBorder="0"
+                    allowFullScreen=""
+                    allow="autoplay; clipboard-write; encrypted-media; 
   fullscreen; picture-in-picture"
-  loading="lazy"
-></iframe>
-</div>	
-</Card>
- );
+                    loading="lazy"
+                  ></iframe>
+                </div>
+              </Card>
+            );
 })}
         </Row>
       </Container>
