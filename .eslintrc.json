@@ -1,0 +1,11 @@
+{"settings": {
+	"react": "latest"
+},
+
+{
+	"rules": {
+		"quotes": [
+			"error", "single"
+		]
+	}
+}

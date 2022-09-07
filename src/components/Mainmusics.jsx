@@ -37,7 +37,7 @@ function Mainmusics({}) {
       .then((result) => result.json())
       .then((data) => {
         setAccessToken(data.access_token);
-        console.log(data);
+
         search();
       });
   }, [artistID]);
@@ -65,22 +65,21 @@ function Mainmusics({}) {
       .then((response) => response.json())
 		.then((data) => {
 		  
-			/*return data.artists.items[0].id*/
 			
         setArtistID(data.artists.items[(0, 1)].id);
       });
 
-    fetch(
-      "https://api.spotify.com/v1/search?q=" +
-        searchInput +
-        "&type=release_date",
-      parametresRecherche
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setDataAlbum(data.release_date.items);
-      });
+    // fetch(
+    //   "https://api.spotify.com/v1/search?q=" +
+        // searchInput +
+        // "&type=release_date",
+    //   parametresRecherche
+    // )
+    //   .then((response) => response.json())
+    //   .then((data) => {
+        // console.log(data);
+        // setDataAlbum(data.release_date.items);
+    //   });
 
     fetch(
       "https://api.spotify.com/v1/search?q=" + searchInput + "&type=album,track,artist",
