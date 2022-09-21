@@ -1,15 +1,18 @@
 import './App.css';
 import Login from './components/Login';
-import {BrowserRouter, Route, Router} from 'react-router-dom' ;
+import Mainmusics from './components/Mainmusics';
+import { BrowserRouter, Route, Router } from 'react-router-dom';
 
 
 
 function App() {
-  return (
-    <div className="App">
-		  <Login />
-    </div>
-  );
+
+    return (
+		<div>
+			<Login />
+            <Mainmusics />
+		</div>
+	);
 }
 
 export default App;

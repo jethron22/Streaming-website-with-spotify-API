@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
-    Card,
+	Card,
 	Container,
 	InputGroup,
 	FormControl,
@@ -15,16 +15,22 @@ import { Favorite } from "@mui/icons-material";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 
-const CLIENT_ID = "3ef00953d1fb46f8a315b8b4f9141d86";
-const CLIENT_SECRET = "1dda9ed5c4ff447fbfd0b8d560fce93f";
+// const CLIENT_ID = "3ef00953d1fb46f8a315b8b4f9141d86";
+// const CLIENT_SECRET = "1dda9ed5c4ff447fbfd0b8d560fce93f";
+//
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
 
 function Mainmusics({}) {
 	const [searchInput, setSearchInput] = useState("Christina shusho");
 	const [accessToken, setAccessToken] = useState("");
 	const [dataAlbum, setDataAlbum] = useState([]);
 	const [artistID, setArtistID] = useState(null);
+	const [albumId, setAlbumId] = useState(`0GB03IydOiczdTv1bTK7DV`);
+	const [like, setLike] = useState(0);
 
 	useEffect(() => {
+		console.log(CLIENT_ID);
 		//Output random artist
 
 		let authParameters = {
@@ -57,22 +63,22 @@ function Mainmusics({}) {
 			method: "GET",
 			headers: {
 				"content-type": "application/json",
-				  Authorization: "Bearer  " + accessToken,
+				Authorization: "Bearer  " + accessToken,
 			},
 		};
 
 		console.log(accessToken);
 
-		fetch(
-			"https://api.spotify.com/v1/search?q=" +
-				searchInput +
-				"&type=artist",
-			parametresRecherche
-		)
-			.then((response) => response.json())
-			.then((data) => {
-				setArtistID(data.artists.items[(0, 1)].id);
-			});
+		// fetch(
+		// "https://api.spotify.com/v1/search?q=" +
+		// searchInput +
+		// "&type=artist",
+		// parametresRecherche
+		// )
+		// .then((response) => response.json())
+		// .then((data) => {
+		// setArtistID(data.artists.items[(0, 1)].id);
+		// });
 
 		fetch(
 			"https://api.spotify.com/v1/search?q=" +
@@ -124,48 +130,56 @@ function Mainmusics({}) {
 						return (
 							<Card
 								className="shadow-sm p-2 ml-2 m-2 bg-secondary"
-                                style={{ width: "250px" }}>
-                                <img src={album.images[0].url} />
-                        
-				  <Card.Body>
+								style={{ width: "200px" }}
+							>
+								<img
+									src={album.images[0].url}
+									onClickNPM
+									START
+								/>
+
+								<Card.Body>
 									<Card.Title>{album.name}</Card.Title>
 									<p className="CardTit">
-								    <CelebrationIcon
+										<CelebrationIcon
 											className="Cebrate"
 											color="secondary"
-										/>{" "}
+										/>
 										Sortie en {album.release_date}
-                                    </p>
-                                    
-							<div className="PreferencesBlocs">
-                                        <Favorite className="FavoriteIcon" />
-                                  
+									</p>
+
+									<div className="PreferencesBlocs">
+										<button
+											className="buttonFavorite"
+											onClick={() =>
+												setLike(like ? 0 : 1)
+											}
+										>
+											<Favorite className="FavoriteIcon" />{" "}
+											<span> {like} </span>
+										</button>
+
 										<ThumbUpIcon className="ThumbUp" />
 										<PlaylistAddIcon className="PlaylistIcon" />
 									</div>
-						   </Card.Body>
-
-								<div className="Iframe">
-									<iframe
-										style={{ borderRadius: "12px" }}
-										src={
-											"https://open.spotify.com/embed/album/" +
-											album.id +
-											"?utm_source=generator"
-										}
-										width="220"
-										height="240"
-										frameBorder="0"
-										allowFullScreen=""
-										allow="autoplay; clipboard-write; encrypted-media; 
-                    fullscreen; picture-in-picture"
-										loading="lazy"
-									></iframe>
-								</div>
+								</Card.Body>
 							</Card>
 						);
 					})}
 				</Row>
+				<div className="Iframe">
+					<iframe
+						style={{ borderRadius: "12px" }}
+						src={`https://open.spotify.com/embed/album/${albumId}?utm_source=generator`}
+						width="220"
+						height="300"
+						frameBorder="0"
+						allowFullScreen=""
+						allow="autoplay; clipboard-write; encrypted-media; 
+                    fullscreen; picture-in-picture"
+						loading="lazy"
+					></iframe>
+				</div>
 			</Container>
 		</div>
 	);

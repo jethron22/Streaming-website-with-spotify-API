@@ -145,12 +145,15 @@ color: rgb(255, 255, 255);
 
 .Cebrate
 {
-	color: rgb(129, 13, 13);
+	color: rgb(248, 9, 9);
 }
 
 .FavoriteIcon
 {
  cursor: pointer;
+ border-radius: 8px;
+ border: none;
+color: rgb(30, 4, 4);
 }
 
 .ThumbUp
@@ -161,4 +164,14 @@ color: rgb(255, 255, 255);
 .PlaylistIcon
 {
 	cursor: pointer;
+}
+
+.buttonFavorite
+{
+    display: flex;
+    border: none;
+    padding: 3px;
+    width: 120px;
+    border-radius: 10px;
+
 }
